@@ -11,24 +11,44 @@ class MainContainer extends Component {
       showYellow: false,
       showGreen: false
     }
-    
   }
-
-  
 
   redClick = () => {
-    console.log("Red clicked")
+    console.log("Red clicked");
+    this.setState({...this.state,
+      showRed: true,
+      showYellow: false,
+      showGreen: false
+    })
   }
   yellowClick = () => {
-    console.log("Yellow clicked")
+    console.log("Yellow clicked");
+    this.setState({...this.state,
+      showRed: false,
+      showYellow: true,
+      showGreen: false
+    })
   }
   greenClick = () => {
-    console.log("Green clicked")
+    console.log("Green clicked");
+    this.setState({...this.state,
+      showRed: false,
+      showYellow: false,
+      showGreen: true
+    })
   }
 
   render() {
+    let classes = [];
 
-    let classes = [styles.red, styles.yellow, styles.green].join(' ');
+    if(this.state.showRed) {
+      classes = styles.red
+    } else if (this.state.showYellow) {
+      classes = styles.yellow
+    } else if (this.state.showGreen) {
+      classes = styles.green
+    }
+
     return(
       <div className={styles.frame}>
         <Light click={this.redClick} color={classes}/>
