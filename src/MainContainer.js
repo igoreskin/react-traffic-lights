@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Light from './Light';
 import styles from './MainContainer.module.css';
 
@@ -38,6 +38,15 @@ class MainContainer extends Component {
     })
   }
 
+  reset = () => {
+    this.setState({
+      ...this.state,
+      showRed: false,
+      showYellow: false,
+      showGreen: false
+    })
+  }
+
   render() {
     let classes = [];
 
@@ -50,11 +59,14 @@ class MainContainer extends Component {
     }
 
     return(
-      <div className={styles.frame}>
-        {this.state.showRed ? <Light click={this.redClick} color={classes} /> : <Light click={this.redClick} />}
-        {this.state.showYellow ? <Light click={this.yellowClick} color={classes} /> : <Light click={this.yellowClick} />}
-        {this.state.showGreen ? <Light click={this.greenClick} color={classes} /> : <Light click={this.greenClick} />}
-      </div>
+      <Fragment>
+        <div className={styles.frame}>
+          {this.state.showRed ? <Light click={this.redClick} color={classes} /> : <Light click={this.redClick} />}
+          {this.state.showYellow ? <Light click={this.yellowClick} color={classes} /> : <Light click={this.yellowClick} />}
+          {this.state.showGreen ? <Light click={this.greenClick} color={classes} /> : <Light click={this.greenClick} />}
+        </div>
+        <button type="button" onClick={this.reset}>Reset</button>
+      </Fragment>
     )
   }
 }

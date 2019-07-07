@@ -1,6 +1,13 @@
+html {
+  background: url('./street-view3.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
 .App {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 /* .App-logo {
