@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import Light from './Light';
 import styles from './MainContainer.module.css';
 
@@ -51,9 +51,9 @@ class MainContainer extends Component {
 
     return(
       <div className={styles.frame}>
-        <Light click={this.redClick} color={classes}/>
-        <Light click={this.yellowClick} color={classes}/>
-        <Light click={this.greenClick} color={classes}/>
+        {this.state.showRed ? <Light click={this.redClick} color={classes} /> : <Light click={this.redClick} />}
+        {this.state.showYellow ? <Light click={this.yellowClick} color={classes} /> : <Light click={this.yellowClick} />}
+        {this.state.showGreen ? <Light click={this.greenClick} color={classes} /> : <Light click={this.greenClick} />}
       </div>
     )
   }
